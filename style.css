@@ -1,202 +1,120 @@
 /* Base styles */
-body {
-  padding-top: max(20px, 2vh);
-  background-color: #202020;
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f2f5;
+  padding: 20px;
 }
 
 h1 {
-  color: #E5E5E5;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: clamp(1.25rem, 3vw, 2.5rem);
-  margin: 0 0 1rem;
-  padding: 0 1rem;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2.5rem;
 }
 
 .converter-wrapper {
-  margin: 0 auto;
-  width: min(90%, 600px);
-  text-align: center;
-  padding: min(5vw, 20px);
-  box-sizing: border-box;
-}
-
-.converter-wrapper input {
-  font-family: 'Open Sans', sans-serif;
-  font-size: max(16px, 1rem);
+  max-width: 600px;
   width: 100%;
-  text-align: center;
-  margin-top: max(8px, 1vh);
-  height: max(40px, 6vh);
-  box-sizing: border-box;
-  border-radius: 4px;
-  padding: 0.5rem;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* Responsive grid layout */
+.select-property {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 25px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
 .converter-side-a,
 .converter-side-b {
-  float: left;
-  margin-top: max(10px, 1.5vh);
-  box-sizing: border-box;
-  width: 100%;
+  margin: 15px 0;
+}
+
+input.numbersonly {
+  width: 60%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+select[name="unit_menu"] {
+  width: 35%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
 .converter-equals {
-  float: left;
-  box-sizing: border-box;
-  width: 100%;
-  color: #FFF;
-  font-size: clamp(1.5rem, 3vw, 2.4rem);
-  line-height: 1.5;
   text-align: center;
-  padding: max(5px, 0.5vh) 0;
-}
-
-/* Select styles */
-.converter-wrapper span {
-  position: relative;
-  display: block;
-  width: 100%;
-  margin-bottom: max(10px, 1.5vh);
-}
-
-.converter-wrapper span select {
-  background-color: #263648;
-  color: #fff;
-  font-size: max(16px, 1rem);
-  padding: max(10px, 1.5vh);
-  width: 100%;
-  border: 0;
-  margin: 0;
-  border-radius: 4px;
-  text-indent: 0.01px;
-  text-overflow: '';
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.converter-wrapper span::before,
-.converter-wrapper span::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-}
-
-.converter-wrapper span::after { /*  Custom dropdown arrow */
-  content: "\25BC";
-  height: 1em;
-  font-size: .625em;
-  line-height: 1;
-  right: 1.5em;
-  top: 50%;
-  margin-top: -.5em;
-  color: #131B24;
-}
-
-.converter-wrapper span::before { /*  Custom dropdown arrow cover */
-  width: 2.5em;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  border-radius: 0;
-  background-color: #202E3C;
+  font-size: 2rem;
+  margin: 15px 0;
+  color: #333;
 }
 
 /* Media Queries */
-@media screen and (max-width: 480px) {
-  .converter-side-a,
-  .converter-side-b {
-    width: 100%;
-    padding: 0;
-    margin-top: 15px;
-  }
-
-  .converter-equals {
-    width: 100%;
-    margin: 10px 0;
-    line-height: 1;
-  }
-
-  .converter-wrapper span select {
-    margin-bottom: 10px;
-  }
-}
-
-/* Tablet and larger screens */
-@media screen and (min-width: 481px) {
-  .converter-side-a,
-  .converter-side-b {
-    width: 45%;
-  }
-  
-  .converter-equals {
-    width: 10%;
-    line-height: 3;
-  }
-  
-  .converter-side-a {
-    padding-right: min(10px, 2vw);
-  }
-  
-  .converter-side-b {
-    padding-left: min(10px, 2vw);
-  }
-}
-
-/* Larger screens */
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
   .converter-wrapper {
-    padding: max(20px, 2vh);
+    padding: 20px;
   }
-  
-  .converter-wrapper input,
-  .converter-wrapper span select {
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
+
+  h1 {
+    font-size: 2rem;
   }
 }
 
-/* Touch device optimizations */
-@media (hover: none) {
-  .converter-wrapper input,
-  .converter-wrapper select {
-    font-size: 16px; /* Prevent zoom on iOS */
-    padding: max(12px, 1.5vh);
+@media screen and (max-width: 480px) {
+  body {
+    padding: 10px;
   }
-  
+
+  .converter-wrapper {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  input.numbersonly,
+  select[name="unit_menu"] {
+    width: 100%;
+    margin: 5px 0;
+  }
+
   .converter-equals {
-    padding: max(8px, 1vh) 0;
+    margin: 10px 0;
+    font-size: 1.5rem;
   }
 }
 
-/* High resolution screens */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .converter-wrapper input,
-  .converter-wrapper select {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+/* Hover and Focus states */
+select:hover,
+input:hover {
+  border-color: #999;
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .converter-wrapper input {
-    background-color: #333;
-    color: #fff;
-    border: 1px solid #444;
-  }
-}
-
-/* Hover and focus states */
-.converter-wrapper input:focus,
-.converter-wrapper select:focus {
-  outline: 2px solid #4CAF50;
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-}
-
-/* Smooth transitions */
-.converter-wrapper input,
-.converter-wrapper select {
-  transition: all 0.3s ease;
+select:focus,
+input:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 5px rgba(0,102,204,0.2);
 }
