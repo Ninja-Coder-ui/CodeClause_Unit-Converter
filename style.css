@@ -1,3 +1,4 @@
+/* Base styles */
 body {
   padding-top: 20px;
   background-color: #202020;
@@ -6,8 +7,9 @@ body {
 h1 {
   color: #E5E5E5;
   font-family: 'Poppins', sans-serif;
-  letter-spacing: 
   font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2.5rem); /* Responsive font size */
+  margin-bottom: 1rem;
 }
 
 .converter-wrapper {
@@ -15,20 +17,42 @@ h1 {
   width: 100%;
   max-width: 600px;
   text-align: center;
-  padding: 10px;
+  padding: clamp(10px, 3vw, 20px); /* Responsive padding */
   box-sizing: border-box;
 }
 
 .converter-wrapper input {
   font-family: 'Open Sans', sans-serif;
-  font-size: 1em;
+  font-size: clamp(0.875rem, 2vw, 1rem); /* Responsive font size */
   width: 100%;
   text-align: center;
   margin-top: 10px;
-  height: 40px;
+  height: clamp(35px, 5vw, 40px); /* Responsive height */
   box-sizing: border-box;
+  border-radius: 4px;
 }
 
+/* Responsive grid layout */
+.converter-side-a,
+.converter-side-b {
+  float: left;
+  margin-top: 10px;
+  box-sizing: border-box;
+  width: 45%;
+}
+
+.converter-equals {
+  float: left;
+  box-sizing: border-box;
+  width: 10%;
+  color: #FFF;
+  font-size: clamp(1.8rem, 4vw, 2.4rem); /* Responsive font size */
+  line-height: 0;
+  text-align: center;
+  padding: 0 5px;
+}
+
+/* Select styles */
 .converter-wrapper span {
   position: relative;
   display: inline-block;
@@ -39,12 +63,12 @@ h1 {
 .converter-wrapper span select {
   background-color: #263648;
   color: #fff;
-  font-size: inherit;
-  padding: 10px;
+  font-size: clamp(0.875rem, 2vw, 1rem); /* Responsive font size */
+  padding: clamp(8px, 2vw, 10px); /* Responsive padding */
   width: 100%;
   border: 0;
   margin: 0;
-  border-radius: 0px;
+  border-radius: 4px;
   text-indent: 0.01px;
   text-overflow: '';
   -webkit-appearance: none; /* hide default arrow in chrome OSX */
@@ -77,28 +101,46 @@ h1 {
   background-color: #202E3C;
 }
 
-.converter-side-a,
-.converter-side-b {
-  float: left;
-  margin-top: 10px;
-  box-sizing: border-box;
-  width: 45%;
+/* Media Queries */
+@media screen and (max-width: 480px) {
+  .converter-side-a,
+  .converter-side-b {
+    width: 100%;
+    padding: 0;
+    margin-top: 15px;
+  }
+
+  .converter-equals {
+    width: 100%;
+    margin: 10px 0;
+    line-height: 1;
+  }
+
+  .converter-wrapper span select {
+    margin-bottom: 10px;
+  }
 }
 
-.converter-equals {
-  float: left;
-  box-sizing: border-box;
-  width: 10%;
-  color: #FFF;
-  font-size: 2.4em;
-  line-height: 0;
-  text-align: center;
+/* Tablet and larger screens */
+@media screen and (min-width: 481px) {
+  .converter-side-a {
+    padding-right: 10px;
+  }
+
+  .converter-side-b {
+    padding-left: 10px;
+  }
 }
 
-.converter-side-a {
-  padding-right: 10px;
+/* Hover and focus states */
+.converter-wrapper input:focus,
+.converter-wrapper select:focus {
+  outline: 2px solid #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
-.converter-side-b {
-  padding-left: 10px;
+/* Smooth transitions */
+.converter-wrapper input,
+.converter-wrapper select {
+  transition: all 0.3s ease;
 }
