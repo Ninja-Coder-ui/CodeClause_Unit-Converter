@@ -1,77 +1,80 @@
 /* Base styles */
 body {
-  padding-top: 20px;
+  padding-top: max(20px, 2vh);
   background-color: #202020;
+  margin: 0;
 }
 
 h1 {
   color: #E5E5E5;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  font-size: clamp(1.5rem, 4vw, 2.5rem); /* Responsive font size */
-  margin-bottom: 1rem;
+  font-size: clamp(1.25rem, 3vw, 2.5rem);
+  margin: 0 0 1rem;
+  padding: 0 1rem;
 }
 
 .converter-wrapper {
   margin: 0 auto;
-  width: 100%;
-  max-width: 600px;
+  width: min(90%, 600px);
   text-align: center;
-  padding: clamp(10px, 3vw, 20px); /* Responsive padding */
+  padding: min(5vw, 20px);
   box-sizing: border-box;
 }
 
 .converter-wrapper input {
   font-family: 'Open Sans', sans-serif;
-  font-size: clamp(0.875rem, 2vw, 1rem); /* Responsive font size */
+  font-size: max(16px, 1rem);
   width: 100%;
   text-align: center;
-  margin-top: 10px;
-  height: clamp(35px, 5vw, 40px); /* Responsive height */
+  margin-top: max(8px, 1vh);
+  height: max(40px, 6vh);
   box-sizing: border-box;
   border-radius: 4px;
+  padding: 0.5rem;
 }
 
 /* Responsive grid layout */
 .converter-side-a,
 .converter-side-b {
   float: left;
-  margin-top: 10px;
+  margin-top: max(10px, 1.5vh);
   box-sizing: border-box;
-  width: 45%;
+  width: 100%;
 }
 
 .converter-equals {
   float: left;
   box-sizing: border-box;
-  width: 10%;
+  width: 100%;
   color: #FFF;
-  font-size: clamp(1.8rem, 4vw, 2.4rem); /* Responsive font size */
-  line-height: 0;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  line-height: 1.5;
   text-align: center;
-  padding: 0 5px;
+  padding: max(5px, 0.5vh) 0;
 }
 
 /* Select styles */
 .converter-wrapper span {
   position: relative;
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
   width: 100%;
+  margin-bottom: max(10px, 1.5vh);
 }
 
 .converter-wrapper span select {
   background-color: #263648;
   color: #fff;
-  font-size: clamp(0.875rem, 2vw, 1rem); /* Responsive font size */
-  padding: clamp(8px, 2vw, 10px); /* Responsive padding */
+  font-size: max(16px, 1rem);
+  padding: max(10px, 1.5vh);
   width: 100%;
   border: 0;
   margin: 0;
   border-radius: 4px;
   text-indent: 0.01px;
   text-overflow: '';
-  -webkit-appearance: none; /* hide default arrow in chrome OSX */
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .converter-wrapper span::before,
@@ -123,12 +126,65 @@ h1 {
 
 /* Tablet and larger screens */
 @media screen and (min-width: 481px) {
-  .converter-side-a {
-    padding-right: 10px;
-  }
-
+  .converter-side-a,
   .converter-side-b {
-    padding-left: 10px;
+    width: 45%;
+  }
+  
+  .converter-equals {
+    width: 10%;
+    line-height: 3;
+  }
+  
+  .converter-side-a {
+    padding-right: min(10px, 2vw);
+  }
+  
+  .converter-side-b {
+    padding-left: min(10px, 2vw);
+  }
+}
+
+/* Larger screens */
+@media screen and (min-width: 768px) {
+  .converter-wrapper {
+    padding: max(20px, 2vh);
+  }
+  
+  .converter-wrapper input,
+  .converter-wrapper span select {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .converter-wrapper input,
+  .converter-wrapper select {
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: max(12px, 1.5vh);
+  }
+  
+  .converter-equals {
+    padding: max(8px, 1vh) 0;
+  }
+}
+
+/* High resolution screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .converter-wrapper input,
+  .converter-wrapper select {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .converter-wrapper input {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
   }
 }
 
